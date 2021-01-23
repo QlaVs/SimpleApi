@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+<!--
+Петров Павел
+-->
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<style>
+
+		body,h1 {font-family: "Raleway", sans-serif}
+		body, html {height: 100%}
+		.bgimg {
+			background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+			min-height: 100%;
+			background-position: center;
+			background-size: cover;
+		}
+		.w3-display-middle {
+			text-align:center
+		}
+		h1 {line-height: 0.5}
+
+		</style>
+
+		<script type='text/javascript'>
+			function OnSelect(){
+				var selected = document.getElementById("myselect").value;
+				var second_stage = document.getElementById("second_stage");
+				while (second_stage.hasChildNodes()) {
+                	second_stage.removeChild(second_stage.lastChild);
+            	}
+				if (selected == 1){
+					var input = document.createElement("input");
+					input.type = "text";
+					input.name = "idval";
+					input.id = "idval";
+					input.placeholder = "Введите ID города";
+					second_stage.appendChild(input);
+
+					second_stage.appendChild(document.createElement("p"));
+
+					var input_button = document.createElement("input");
+					input_button.type = "submit";
+					input_button.value = "Ввод";
+					input_button.onclick = "location.href = '/req';";
+					second_stage.appendChild(input_button);
+
+				} else if (selected == 2){
+					second_stage.appendChild(document.createTextNode("Страница: "));
+
+					second_stage.appendChild(document.createElement("p"));
+
+					var page_input = document.createElement("input");
+					page_input.type = "text";
+					page_input.name = "page";
+					page_input.id = "page";
+					page_input.size = "25";
+					page_input.placeholder = "Введите номер страницы";
+					second_stage.appendChild(page_input);
+
+					second_stage.appendChild(document.createElement("p"));
+
+					second_stage.appendChild(document.createTextNode("Кол-во элементов на странице: "));
+
+					second_stage.appendChild(document.createElement("p"));
+
+					var q_input = document.createElement("input");
+					q_input.name = "quantity";
+					q_input.id = "quantity";
+					q_input.size = "25";
+					q_input.placeholder = "Введите количество";
+					second_stage.appendChild(q_input);
+
+					second_stage.appendChild(document.createElement("p"));
+
+           			var input_button = document.createElement("input");
+					input_button.type = "submit";
+					input_button.value = "Ввод";
+					input_button.onclick = "location.href = '/req';";
+					second_stage.appendChild(input_button);
+
+				} else if (selected == 3){
+					for (i=0; i<2; i++){
+					second_stage.appendChild(document.createTextNode("Город " + (i+1)));
+					var input = document.createElement("input");
+					input.type = "text";
+					input.name = "cityval" + (i+1);
+					input.id = "cityval" + (i+1);
+					input.size = "25";
+					input.placeholder = "Введите название города " + i;
+					second_stage.appendChild(input);
+					second_stage.appendChild(document.createElement("p"));
+           			}
+
+           			var input_button = document.createElement("input");
+					input_button.type = "submit";
+					input_button.value = "Ввод";
+					input_button.onclick = "location.href = '/req';";
+					second_stage.appendChild(input_button);
+				}
+			}
+		</script>
+		<title>Информация о городах</title>
+	</head>
+	<body>
+	<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+		<div class="w3-display-topleft w3-padding-large w3-xlarge">
+		<a href="http://download.geonames.org/export/dump/RU.zip">Информация о городах и их ID</a>
+			(Необязательно, для ознакомления. Все необходимые файлы лежат в директории)
+		</div>
+		<div class="w3-display-middle">
+			<h1 class="w3-jumbo w3-animate-top";>Тестовое задание <p>(Python Разработчик)</p></h1>
+			<hr class="w3-border-grey" style="margin:auto;width:40%">
+			<p class="w3-large w3-center">Выберите, что нужно отобразить:</p>
+			<form id="myform" method="GET" action="{{ url_for('task') }}">
+			<select id="myselect" >
+				<option value="#">Выбрать...</option>
+				<option value="1">Город по ID</option>
+				<option value="2">Список городов</option>
+				<option value="3">Сравнить два города</option>
+			</select>
+			<input type="button" id="mainbutton" value="Выбрать"  onclick = "OnSelect()"/>
+			<div id="second_stage"></div>
+			</form>
+		</div>
+		<div class="w3-display-bottomleft w3-padding-large">
+		Возможные параметры:
+		<ul>
+			<li>idval=*</li>
+			<li>page=*&quantity=*</li>
+			<li>cityval1=*&cityval2=*</li>
+		</ul>
+		(Прим.: http://127.0.0.1:8000/req?idval=7899496)
+		<p>&copy; Петров Павел</p>
+		</div>
+	</div>
+	</body>
+</html> 
