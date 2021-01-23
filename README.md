@@ -26,7 +26,7 @@
 
 ### Примеры запросов:
 ```
-idval=*
-page=*&quantity=*
-cityval1=*&cityval2=*
+/req?idval=*
+/req?page=*&quantity=*
+/req?cityval1=*&cityval2=*
 ```
