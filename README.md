@@ -1,4 +1,4 @@
-# SimpleApi
+# SimpleAPI
 Тестовое задания для Infotecs
 
 ## Метод 1
